@@ -9,10 +9,6 @@ edition = "2021"
 [lib]
 crate-type = ["cdylib", "rlib"]
 
-[[bin]]
-name = "evm_rpc_canister"
-path = "src/main.rs"
-
 [profile.release]
 debug = false
 lto = true
