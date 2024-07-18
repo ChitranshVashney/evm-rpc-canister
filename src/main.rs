@@ -257,7 +257,7 @@ fn post_upgrade(args: InitArgs) {
 
     // TODO: replace with data structure in minter canister
     pub static PRINT_LOG_FILTER: std::sync::Mutex<Option<Vec<String>>> = std::sync::Mutex::new(None);
-    *PRINT_LOG_FILTER.lock().unwrap() = args.print_logs;
+    *PRINT_LOG_FILTER.lock().unwrap() = args.log_message_filter;
 }
 
 #[query]

@@ -80,7 +80,7 @@ type HttpOutcallError = variant {
 };
 type InitArgs = record {
   nodesInSubnet : nat32;
-  printLogs : opt vec text;
+  logMessageFilter : opt vec text;
 };
 type JsonRpcError = record { code : int64; message : text };
 type LogEntry = record {
