@@ -257,7 +257,8 @@ fn post_upgrade(args: InitArgs) {
 
     // TODO: replace with data structure in minter canister
     // See https://gitlab.com/dfinity-lab/public/ic/-/merge_requests/20463
-    pub static PRINT_LOG_FILTER: std::sync::Mutex<Option<Vec<String>>> = std::sync::Mutex::new(None);
+    pub static PRINT_LOG_FILTER: std::sync::Mutex<Option<Vec<String>>> =
+        std::sync::Mutex::new(None);
     *PRINT_LOG_FILTER.lock().unwrap() = args.log_message_filter;
 }
 
