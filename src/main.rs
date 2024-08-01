@@ -95,7 +95,7 @@ pub async fn eth_fee_history(
     source: RpcServices,
     config: Option<RpcConfig>,
     args: candid_types::FeeHistoryArgs,
-) -> MultiRpcResult<Option<FeeHistory>> {
+) -> MultiRpcResult<FeeHistory> {
     match CandidRpcClient::new(source, config) {
         Ok(source) => source.eth_fee_history(args).await,
         Err(err) => Err(err).into(),
@@ -361,7 +361,7 @@ fn authorize(principal: Principal, auth: Auth) -> bool {
     do_authorize(principal, auth)
 }
 
-#[query(name = "getAuthorized", guard = "require_manage_or_controller")]
+#[query(name = "getAuthorized")]
 #[candid_method(query, rename = "getAuthorized")]
 fn get_authorized(auth: Auth) -> Vec<Principal> {
     AUTH.with(|a| {

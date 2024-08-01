@@ -1,14 +1,14 @@
 type Auth = variant { FreeRpc; PriorityRpc; RegisterProvider; Manage };
 type Block = record {
   miner : text;
-  totalDifficulty : nat;
+  totalDifficulty : opt nat;
   receiptsRoot : text;
   stateRoot : text;
   hash : text;
-  difficulty : nat;
+  difficulty : opt nat;
   size : nat;
   uncles : vec text;
-  baseFeePerGas : nat;
+  baseFeePerGas : opt nat;
   extraData : text;
   transactionsRoot : opt text;
   sha3Uncles : text;
@@ -166,7 +166,7 @@ type RejectionCode = variant {
   SysFatal;
   CanisterReject;
 };
-type FeeHistoryResult = variant { Ok : opt FeeHistory; Err : RpcError };
+type FeeHistoryResult = variant { Ok : FeeHistory; Err : RpcError };
 type GetBlockByNumberResult = variant { Ok : Block; Err : RpcError };
 type GetLogsResult = variant { Ok : vec LogEntry; Err : RpcError };
 type GetTransactionCountResult = variant { Ok : nat; Err : RpcError };
@@ -234,13 +234,11 @@ type TransactionReceipt = record {
   gasUsed : nat;
 };
 type UpdateProviderArgs = record {
+  providerId : nat64;
   cyclesPerCall : opt nat64;
   credentialPath : opt text;
-  hostname : opt text;
   credentialHeaders : opt vec HttpHeader;
-  primary : opt bool;
   cyclesPerMessageByte : opt nat64;
-  providerId : nat64;
 };
 type ValidationError = variant {
   Custom : text;
